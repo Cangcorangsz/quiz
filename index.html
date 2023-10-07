@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Pacifico&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #DF2E38;
+        }
+
+        .outer {
+            width: 90%;
+            padding: 5%;
+            margin: 2% auto;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-areas:
+                "quiz quiz"
+                "soal hasil";
+            grid-template-columns: 1fr 1fr;
+            border-radius: 10%;
+            background-color: #5D9C59;
+        }
+
+        .soal {
+            grid-area: soal;
+        }
+
+        .hasil {
+            grid-area: hasil;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 6%;
+            font-family: 'Pacifico', cursive;
+            color: #C7E8CA;
+        }
+
+        p {
+            margin-bottom: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #DDF7E3;
+        }
+
+        #soal1 {
+            margin-top: 0;
+        }
+
+        .hasil>* {
+            color: #C7E8CA;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <h1>QUIZ DADAKAN!!</h1>
+
+        <div class="soal">
+            <p id="soal1">Siapakah presiden pertama indonesia?</p>
+            <input type="text" placeholder="Jawab Disini" id="jawab1">
+
+            <p id="soal2">Siapakah presiden indonesia sekarang?</p>
+            <input type="text" placeholder="Jawab Disini" id="jawab2">
+
+            <p id="soal3">Dimana ibukota negara indonesia sekarang?</p>
+            <input type="text" placeholder="Jawab Disini" id="jawab3">
+
+            <p id="soal4">Siapa tokoh terkenal dalam teori gravitasi?</p>
+            <input type="text" placeholder="Jawab Disini" id="jawab4">
+
+            <p id="soal5">serangkaian langkah logis yang digunakan untuk menyelesaikan masalah atau tugas komputasi.
+                Disebut
+                dengan?</p>
+            <input type="text" placeholder="Jawab Disini" id="jawab5">
+            <br>
+            <br>
+            <button type="button" id="cek">Cek nilaimu disini</button>
+        </div>
+
+        <div class="hasil">
+            <h3 id="hasil1"></h3>
+            <h3 id="hasil2"></h3>
+            <h3 id="hasil3"></h3>
+            <h3 id="hasil4"></h3>
+            <h3 id="hasil5"></h3>
+            <h2 id="hasil6"></h2>
+        </div>
+    </div>
+
+    <script>
+        const soal1 = document.getElementById("soal1");
+        const soal2 = document.getElementById("soal2");
+        const soal3 = document.getElementById("soal3");
+        const soal4 = document.getElementById("soal4");
+        const soal5 = document.getElementById("soal5");
+        const jawab1 = document.getElementById("jawab1");
+        const jawab2 = document.getElementById("jawab2");
+        const jawab3 = document.getElementById("jawab3");
+        const jawab5 = document.getElementById("jawab5");
+        const jawab6 = document.getElementById("jawab6");
+        const hasil1 = document.getElementById("hasil1");
+        const hasil2 = document.getElementById("hasil2");
+        const hasil3 = document.getElementById("hasil3");
+        const hasil4 = document.getElementById("hasil4");
+        const hasil5 = document.getElementById("hasil5");
+        const hasil6 = document.getElementById("hasil6");
+        const cek = document.getElementById("cek");
+
+        let nilai = 0;
+        let statement1;
+        let statement2;
+        let statement3;
+        let statement4;
+        let statement5;
+
+        cek.addEventListener("click", function () {
+            nilai = 0;
+            if (jawab1.value.toUpperCase() === "SOEKARNO" || jawab1.value.toUpperCase() === "SUKARNO") {
+                statement1 = "Soal1: Benar";
+                nilai++;
+            } else {
+                statement1 = "Soal1: Salah";
+            }
+
+            if (jawab2.value.toUpperCase() === "JOKOWI") {
+                statement2 = "Soal2: Benar";
+                nilai++;
+            } else {
+                statement2 = "Soal2: Salah";
+            }
+
+            if (jawab3.value.toUpperCase() === "JAKARTA") {
+                statement3 = "Soal3: Benar";
+                nilai++;
+            } else {
+                statement3 = "Soal3: Salah";
+            }
+
+            if (jawab4.value.toUpperCase() === "ISAAC NEWTON") {
+                statement4 = "Soal4: Benar";
+                nilai++;
+            } else if (jawab4.value.toUpperCase() === "ISAACNEWTON") {
+                statement4 = "Soal4: Benar";
+                nilai++;
+            } else {
+                statement4 = "Soal4: Salah";
+            }
+
+            if (jawab5.value.toUpperCase() === "ALGORITMA") {
+                statement5 = "Soal5: Benar";
+                nilai++;
+            } else {
+                statement5 = "Soal5: Salah";
+            }
+
+            let hasilAkhir = (nilai / 5) * 100;
+
+            hasil1.innerHTML = statement1;
+            hasil2.innerHTML = statement2;
+            hasil3.innerHTML = statement3;
+            hasil4.innerHTML = statement4;
+            hasil5.innerHTML = statement5;
+            hasil6.innerHTML = `Skor: ${hasilAkhir}%`;
+        });
+    </script>
+
+</body>
+
+</html>
